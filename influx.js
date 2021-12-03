@@ -2,6 +2,7 @@ const express = require('express');
 const randomBytes = require('randombytes');
 const app = express();
 const axios = require('axios').default;
+// app.use(express.text());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,6 +24,7 @@ const auth = {
 app.post('/influxwriter', async (req, res) => {
 	const id = randomBytes(4).toString('hex');
 	const { data } = req.body;
+	console.log(data);
 	data_influx[id] = {
 		id,
 		data,
